@@ -1,0 +1,4 @@
+---
+import Layout from '../../components/Layout.astro'; import { copy } from '../../config/site'; const locale='en' as const;
+---
+<Layout {locale} title="Cookie policy" description="Growth Marketing cookie policy structure." path="/en/cookies/" noindex><section class="section"><div class="container legal"><div class="eyebrow">Legal</div><h1 class="serif">Cookie policy</h1><p>{copy[locale].legalPending}</p><p>Before publication, add the approved cookie inventory, purposes, durations, providers and consent controls. Analytics and non-essential scripts remain disabled until then.</p></div></section></Layout>

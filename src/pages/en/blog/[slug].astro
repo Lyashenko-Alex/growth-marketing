@@ -1,0 +1,6 @@
+---
+import Layout from '../../../components/Layout.astro'; import { getCollection, render } from 'astro:content'; import { siteConfig } from '../../../config/site';
+export async function getStaticPaths(){ const posts=await getCollection('blog',({data})=>!data.draft&&data.language==='en'); return posts.map(post=>({params:{slug:post.data.slug},props:{post}})); }
+const {post}=Astro.props; const {Content}=await render(post); const path=`/en/blog/${post.data.slug}/`;
+---
+<Layout locale="en" title={post.data.seoTitle||post.data.title} description={post.data.seoDescription||post.data.description} path={path} type="article" schema={{'@context':'https://schema.org','@type':'BlogPosting',headline:post.data.title,description:post.data.description,datePublished:post.data.publicationDate.toISOString(),dateModified:(post.data.updatedDate||post.data.publicationDate).toISOString(),author:{'@type':'Person',name:post.data.author},mainEntityOfPage:siteConfig.productionUrl?`${siteConfig.productionUrl}${path}`:undefined}}><article class="section prose"><div class="container"><div class="breadcrumbs">Blog / {post.data.category}</div><div class="eyebrow">{post.data.category}</div><h1 class="serif">{post.data.title}</h1><p class="blog-meta">{post.data.publicationDate.toLocaleDateString('en-GB')} · {post.data.author}</p><Content /></div></article></Layout>

@@ -1,0 +1,4 @@
+---
+import Layout from '../../components/Layout.astro'; import { copy } from '../../config/site'; const locale='en' as const;
+---
+<Layout {locale} title="Privacy policy" description="Growth Marketing privacy policy structure." path="/en/privacy/" noindex><section class="section"><div class="container legal"><div class="eyebrow">Legal</div><h1 class="serif">Privacy policy</h1><p>{copy[locale].legalPending}</p><p>This page is a structure for approved legal information. Before publication, add the data controller, processing purposes and legal bases, retention periods, individual rights and the contact for exercising them.</p></div></section></Layout>

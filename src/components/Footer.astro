@@ -1,0 +1,6 @@
+---
+import type { Locale } from '../config/site';
+import { navigation, pathFor, siteConfig } from '../config/site';
+const { locale } = Astro.props as { locale: Locale };
+---
+<footer><div class="container footer-grid"><div><a class="wordmark" href={pathFor(locale, '/')} aria-label="Growth Marketing">growth<span>.</span>marketing</a><p class="muted">{locale === 'sl' ? 'Strategija za digitalno rast.' : 'Strategy for digital growth.'}</p></div><div><div class="footer-links">{navigation[locale].map((item)=><a href={item.href}>{item.label}</a>)}<a href={pathFor(locale, locale === 'sl' ? '/zasebnost/' : '/en/privacy/')}>{locale === 'sl' ? 'Zasebnost' : 'Privacy'}</a><a href={pathFor(locale, locale === 'sl' ? '/piskotki/' : '/en/cookies/')}>{locale === 'sl' ? 'Piškotki' : 'Cookies'}</a></div>{siteConfig.email && <p>{siteConfig.email}</p>}<p class="muted">© {new Date().getFullYear()} Growth Marketing</p></div></div></footer>

@@ -1,0 +1,4 @@
+---
+import Layout from '../components/Layout.astro'; import ContactForm from '../components/ContactForm.astro'; const locale='sl' as const;
+---
+<Layout {locale} title="Kontakt" description="Zahtevajte brezplačno konkurenčno analizo za svoje podjetje." path="/kontakt/"><section class="section contact-section"><div class="container contact-layout"><div class="contact-intro"><div class="eyebrow">Kontakt</div><h1>Začnimo z brezplačno analizo.</h1><p class="muted">Analiziramo vaše podjetje, spletno mesto in glavnega konkurenta ter pripravimo konkretne predloge za rast.</p><ul class="contact-summary"><li>Analiza spletnega mesta in SEO</li><li>Konkurenčna analiza</li><li>Vidnost v Googlu in AI iskanju</li><li>Priložnosti za rast</li><li>Priporočen 90-dnevni akcijski načrt</li></ul><p class="contact-no-obligation">Brez obveznosti sklenitve plačljive pogodbe.</p></div><ContactForm locale={locale} /></div></section></Layout>

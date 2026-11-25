@@ -1,0 +1,4 @@
+---
+import Layout from '../../components/Layout.astro'; import { getCollection } from 'astro:content'; import { copy } from '../../config/site'; const locale='sl' as const; const t=copy[locale]; const posts=(await getCollection('blog', ({data})=>!data.draft && data.language===locale)).sort((a,b)=>b.data.publicationDate.valueOf()-a.data.publicationDate.valueOf());
+---
+<Layout {locale} title="Blog" description="Vpogledi v digitalno rast, SEO, AI iskanje in marketinško strategijo." path="/blog/"><section class="section"><div class="container"><div class="eyebrow">Blog</div><h1 class="serif">Znanje za boljše odločitve.</h1>{posts.length ? <div class="grid numbered-grid">{posts.map(post=><article><div class="eyebrow">{post.data.category}</div><h2><a href={`/blog/${post.data.slug}/`}>{post.data.title}</a></h2><p class="muted">{post.data.description}</p></article>)}</div> : <div class="empty">{t.noArticles}</div>}</div></section></Layout>

@@ -1,0 +1,4 @@
+---
+import Layout from '../../components/Layout.astro'; import ContactForm from '../../components/ContactForm.astro'; const locale='en' as const;
+---
+<Layout {locale} title="Contact" description="Request a free competitive analysis for your business." path="/en/contact/"><section class="section contact-section"><div class="container contact-layout"><div class="contact-intro"><div class="eyebrow">Contact</div><h1>Let's start with a free analysis.</h1><p class="muted">We analyze your business, website and main competitor to identify concrete growth opportunities.</p><ul class="contact-summary"><li>Website and SEO analysis</li><li>Competitive analysis</li><li>Google and AI search visibility</li><li>Growth opportunities</li><li>Recommended 90-day action plan</li></ul><p class="contact-no-obligation">No obligation to sign a paid marketing contract.</p></div><ContactForm locale={locale} /></div></section></Layout>

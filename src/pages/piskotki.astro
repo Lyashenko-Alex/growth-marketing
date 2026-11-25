@@ -1,0 +1,4 @@
+---
+import Layout from '../components/Layout.astro'; import { copy } from '../config/site'; const locale='sl' as const;
+---
+<Layout {locale} title="Politika piškotkov" description="Osnutek politike piškotkov Growth Marketing." path="/piskotki/" noindex><section class="section"><div class="container legal"><div class="eyebrow">Pravno</div><h1 class="serif">Politika piškotkov</h1><p>{copy[locale].legalPending}</p><p>Pred objavo je treba vnesti odobren seznam piškotkov, namene, trajanje, ponudnike in način upravljanja soglasij. Analitika in nenujni skripti so do takrat izključeni.</p></div></section></Layout>

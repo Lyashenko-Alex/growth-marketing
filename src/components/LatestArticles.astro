@@ -1,0 +1,6 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../config/site';
+const { posts, locale } = Astro.props as { posts: CollectionEntry<'blog'>[]; locale: Locale };
+---
+<div class="article-grid">{posts.slice(0, 3).map((post) => <article class="article-preview"><div class="eyebrow">{post.data.category}</div><h3><a href={`${locale === 'en' ? '/en' : ''}/blog/${post.data.slug}/`}>{post.data.title}</a></h3><p class="muted">{post.data.description}</p><a class="text-link" href={`${locale === 'en' ? '/en' : ''}/blog/${post.data.slug}/`}>{locale === 'sl' ? 'Preberi zapis' : 'Read article'} ↗</a></article>)}</div>

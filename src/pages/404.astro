@@ -1,0 +1,4 @@
+---
+import Layout from '../components/Layout.astro'; import { copy } from '../config/site'; const locale='sl' as const;
+---
+<Layout {locale} title="Stran ni najdena" description="Stran ni najdena." path="/404/" noindex><section class="section"><div class="container"><div class="eyebrow">404</div><h1 class="serif">Te strani ni tukaj.</h1><a class="button" href="/">{copy[locale].back}</a></div></section></Layout>

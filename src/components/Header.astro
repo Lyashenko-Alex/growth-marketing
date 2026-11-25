@@ -1,0 +1,17 @@
+---
+import type { Locale } from '../config/site';
+import { navigation, pathFor } from '../config/site';
+const { locale, currentPath } = Astro.props as { locale: Locale; currentPath: string };
+const other = locale === 'en' ? 'sl' : 'en';
+const localPath = locale === 'en' ? currentPath.replace(/^\/en/, '') || '/' : currentPath;
+const translatedPaths: Record<string, string> = { '/cenik/': '/pricing/', '/pricing/': '/cenik/', '/kontakt/': '/contact/', '/contact/': '/kontakt/', '/zasebnost/': '/privacy/', '/privacy/': '/zasebnost/', '/piskotki/': '/cookies/', '/cookies/': '/piskotki/' };
+const switchPath = translatedPaths[localPath] || localPath;
+---
+<header class="site-header"><div class="container header-inner">
+  <a class="wordmark" href={pathFor(locale, '/')} aria-label="Growth Marketing">growth<span>.</span>marketing</a>
+  <nav aria-label={locale === 'sl' ? 'Glavna navigacija' : 'Main navigation'}>
+    {navigation[locale].map((item) => <a href={item.href}>{item.label}</a>)}
+    <a class="lang" href={pathFor(other, switchPath)} lang={other}>{other === 'en' ? 'EN' : 'SL'}</a>
+    <a class="button green" href={pathFor(locale, locale === 'en' ? '/contact/' : '/kontakt/')}>{locale === 'sl' ? 'Brezplačna analiza' : 'Free analysis'}</a>
+  </nav>
+</div></header>

@@ -1,0 +1,9 @@
+---
+const { locale = 'en' } = Astro.props as { locale?: 'sl' | 'en' };
+const labels = locale === 'sl' ? ['KONCEPTUALNI MODEL RASTI', 'SEO', 'AI ISKANJE', 'ANALITIKA', 'PLAČLJIVO OGLAŠEVANJE'] : ['CONCEPTUAL GROWTH SYSTEM', 'SEO', 'AI SEARCH', 'ANALYTICS', 'PAID MEDIA'];
+---
+<div class="growth-visual" aria-label={locale === 'sl' ? 'Konceptualna ilustracija analize, strategije in rasti' : 'Conceptual illustration of analysis, strategy and growth'} role="img">
+  <div class="visual-topline"><span>{labels[0]}</span><span>01—03</span></div>
+  <svg viewBox="0 0 560 390" aria-hidden="true"><path class="grid-line" d="M32 326H532M32 246H532M32 166H532M32 86H532M112 38V326M212 38V326M312 38V326M412 38V326M512 38V326"/><path class="curve-shadow" d="M32 294 C108 286 112 238 178 250 S246 176 302 196 S376 112 434 132 S486 70 532 50"/><path class="curve" d="M32 294 C108 286 112 238 178 250 S246 176 302 196 S376 112 434 132 S486 70 532 50"/><circle class="curve-dot" cx="302" cy="196" r="7"/><circle class="curve-dot" cx="434" cy="132" r="7"/></svg>
+  <div class="visual-tags">{labels.slice(1).map(label => <span>{label}</span>)}</div>
+</div>

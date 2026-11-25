@@ -1,0 +1,13 @@
+---
+import type { Locale } from '../config/site';
+import { packages, featureLabels } from '../config/pricing';
+const { locale } = Astro.props as { locale: Locale };
+const positioning = { starter: { sl: 'Temelji digitalne rasti.', en: 'Foundations for digital growth.' }, growth: { sl: 'Celovit growth marketing.', en: 'Comprehensive growth marketing.' }, scale: { sl: 'Vaš zunanji marketinški oddelek.', en: 'Your external marketing department.' } };
+---
+<div class="grid price-grid">{packages.map((pack) => <article class:list={['price-card', { featured: pack.featured }]}>
+  <div class="recommendation">{pack.featured && (locale === 'sl' ? 'PRIPOROČENO' : 'RECOMMENDED')}</div>
+  <div class="price-card-head"><h3>{pack.name[locale]}</h3><p class="price-positioning">{positioning[pack.id][locale]}</p></div>
+  <div class="price">{locale === 'sl' ? `${pack.price.toLocaleString('de-DE')} €` : `€${pack.price.toLocaleString('en-US')}`}<small>&nbsp;/ {locale === 'sl' ? 'mesec' : 'month'}</small></div>
+  <ul>{pack.features.map((feature) => <li><span class="check" aria-hidden="true">✓</span>{featureLabels[feature][locale]}</li>)}</ul>
+  <a class:list={['button', pack.featured ? 'button-light' : 'secondary']} href={locale === 'sl' ? '/kontakt/' : '/en/contact/'}>{locale === 'sl' ? 'Pogovorimo se' : 'Start a conversation'} <span aria-hidden="true">↗</span></a>
+</article>)}</div>

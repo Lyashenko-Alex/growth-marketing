@@ -1,0 +1,23 @@
+{
+  "name": "growth-marketing-website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --config astro.local.config.mjs",
+    "build": "astro build",
+    "preview": "astro preview --config astro.local.config.mjs",
+    "check": "astro check",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.4.9",
+    "astro": "^7.4.13"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "prettier": "^3.6.2",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.125.0"
+  }
+}

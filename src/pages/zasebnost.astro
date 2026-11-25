@@ -1,0 +1,4 @@
+---
+import Layout from '../components/Layout.astro'; import { copy } from '../config/site'; const locale='sl' as const;
+---
+<Layout {locale} title="Politika zasebnosti" description="Osnutek politike zasebnosti Growth Marketing." path="/zasebnost/" noindex><section class="section"><div class="container legal"><div class="eyebrow">Pravno</div><h1 class="serif">Politika zasebnosti</h1><p>{copy[locale].legalPending}</p><p>Ta stran je pripravljena kot struktura za vnos odobrenih pravnih informacij. Pred objavo je treba dodati upravljavca podatkov, namene in pravne podlage obdelave, obdobja hrambe, pravice posameznikov ter kontakt za njihovo uveljavljanje.</p></div></section></Layout>

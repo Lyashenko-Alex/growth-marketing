@@ -1,0 +1,4 @@
+---
+import Layout from '../../components/Layout.astro'; import PricingCards from '../../components/PricingCards.astro'; import { commercialConditions } from '../../config/pricing'; const locale='en' as const;
+---
+<Layout {locale} title="Pricing" description="Monthly Growth Marketing packages for thoughtful digital growth." path="/en/pricing/"><section class="section"><div class="container"><div class="eyebrow">Pricing</div><h1 class="serif">Packages for your next stage of growth.</h1><p class="muted">Clearly defined services and fixed monthly prices.</p><PricingCards locale={locale} /><div class="section-header" style="margin-top:80px"><h2 class="serif">Commercial conditions</h2><ul>{commercialConditions[locale].map(c=><li>{c}</li>)}</ul></div></div></section></Layout>

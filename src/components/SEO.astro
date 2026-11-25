@@ -1,0 +1,18 @@
+---
+import type { Locale } from '../config/site';
+import { siteConfig } from '../config/site';
+interface Props { title: string; description: string; locale: Locale; path: string; type?: 'website'|'article'; noindex?: boolean; }
+const { title, description, locale, path, type = 'website', noindex = false } = Astro.props;
+const canonical = siteConfig.productionUrl ? `${siteConfig.productionUrl.replace(/\/$/, '')}${path}` : '';
+const alternatePath = locale === 'en' ? path.replace(/^\/en/, '') || '/' : `/en${path === '/' ? '/' : path}`;
+const alternate = siteConfig.productionUrl ? `${siteConfig.productionUrl.replace(/\/$/, '')}${alternatePath}` : '';
+---
+<title>{title} | Growth Marketing</title>
+<meta name="description" content={description} />
+<meta name="robots" content={noindex || !siteConfig.productionUrl ? 'noindex, nofollow' : 'index, follow'} />
+{canonical && <link rel="canonical" href={canonical} />}
+{canonical && <link rel="alternate" hreflang={locale} href={canonical} />}
+{alternate && <link rel="alternate" hreflang={locale === 'en' ? 'sl' : 'en'} href={alternate} />}
+{canonical && <link rel="alternate" hreflang="x-default" href={locale === 'en' ? alternate : canonical} />}
+<meta property="og:type" content={type} /><meta property="og:site_name" content="Growth Marketing" /><meta property="og:title" content={title} /><meta property="og:description" content={description} />
+{canonical && <meta property="og:url" content={canonical} />}

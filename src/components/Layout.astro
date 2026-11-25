@@ -1,0 +1,9 @@
+---
+import '../styles/global.css';
+import SEO from './SEO.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import type { Locale } from '../config/site';
+const { locale, title, description, path, type, noindex, schema } = Astro.props as { locale: Locale; title: string; description: string; path: string; type?: 'website'|'article'; noindex?: boolean; schema?: Record<string, unknown> };
+---
+<!doctype html><html lang={locale}><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" /><SEO {title} {description} {locale} {path} {type} {noindex} />{schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}</head><body><Header {locale} currentPath={path} /><main><slot /></main><Footer {locale} /></body></html>
